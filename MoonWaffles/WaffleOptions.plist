@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>rocket</key>
+	<string></string>
+	<key>superMoon</key>
+	<string></string>
+	<key>charmander</key>
+	<string></string>
+	<key>charmelion</key>
+	<string></string>
+	<key>squirtle</key>
+	<string></string>
+	<key>horrorcake</key>
+	<string></string>
+	<key>superWaffle</key>
+	<string></string>
+</dict>
+</plist>
