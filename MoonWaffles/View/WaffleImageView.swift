@@ -10,12 +10,12 @@ import UIKit
 
 final class WaffleImageView: UIImageView {
     
-    private init() {
-        super.init(image: UIImage(named: "superWaffle"))
+    private convenience init() {
+        self.init("superWaffle")
     }
     
-    internal required init?(coder aDecoder: NSCoder) {
-        super.init(image: UIImage(named: "superWaffle"))
+    internal required convenience init?(coder aDecoder: NSCoder) {
+        self.init("superWaffle")
     }
     
     private init(_ name: String) {
@@ -25,6 +25,8 @@ final class WaffleImageView: UIImageView {
         else {
             super.init(image: UIImage(named: "superWaffle"))
         }
+        self.contentMode = .scaleAspectFit
+        self.layer.masksToBounds = false
     }
     
     static func newWaffle() -> WaffleImageView {
@@ -33,7 +35,6 @@ final class WaffleImageView: UIImageView {
                               y: 0,
                               width: 80,
                               height: 80)
-        waffle.layer.masksToBounds = false
         return waffle
     }
     
@@ -44,7 +45,6 @@ final class WaffleImageView: UIImageView {
                                   y: 0,
                                   width: (waffle.image?.size.width)! / 2.0,
                                   height: (waffle.image?.size.height)! / 2.0)
-            waffle.layer.masksToBounds = false
             return waffle
         }
         else {

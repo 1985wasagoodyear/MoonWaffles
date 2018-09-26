@@ -30,7 +30,7 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         self.animator = UIDynamicAnimator(referenceView: self.view)
         
         self.gravityBehavior = UIGravityBehavior(items: [])
-        gravityBehavior.magnitude = -0.5
+        gravityBehavior.magnitude = -0.4
         self.animator.addBehavior(gravityBehavior)
         
         moon = UIImageView(image: UIImage(named: "superMoon"))
@@ -60,10 +60,7 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        moon.frame = CGRect(x: self.view.center.x - 40.0,
-                            y: 100.0,
-                            width: 80.0,
-                            height: 80.0)
+        moon.center = CGPoint(x: self.view.center.x, y: 100.0)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,25 +84,24 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
                 waffle.removeFromSuperview()
                 self.waffles.remove(waffle)
                 self.waffleCount += 1
-                print("did remove waffle \(waffleCount)");
+                // print("did remove waffle \(waffleCount)");
             }
         }
         
         // put the moon back
         if (!moon.superview!.frame.intersects(moon.frame)) {
-            let center = CGPoint(x: moon.superview!.center.x - 40.0, y: 100.0)
-            
+            let center = CGPoint(x: moon.superview!.center.x, y: 100.0)
             self.collisionBehavior.removeItem(moon)
-            UIView.animate(withDuration: 1.0, animations: { [unowned self] in
+            moon.alpha = 0.5
+            UIView.animate(withDuration: 2.0, animations: { [unowned self] in
                 self.moon.center = center
+                self.moon.layoutIfNeeded()
             }) { [unowned self] (completed) in
                 if (completed == true) {
                     self.collisionBehavior.addItem(self.moon)
-                    print("moved moon back")
+                    self.moon.alpha = 1.0
                 }
             }
-            
-            
         }
     }
     
