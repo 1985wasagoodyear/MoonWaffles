@@ -34,7 +34,8 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         self.animator.addBehavior(gravityBehavior)
         
         moon = UIImageView(image: UIImage(named: "superMoon"))
-        moon.contentMode = .scaleAspectFit;
+        moon.contentMode = .scaleAspectFit
+        
         moon.frame = CGRect(x: self.view.center.x - 40.0,
                             y: 100.0,
                             width: 80.0,
@@ -43,12 +44,14 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         
         self.collisionBehavior = UICollisionBehavior(items: [moon])
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        collisionBehavior.collisionMode = .items
+        
         animator.addBehavior(collisionBehavior)
         
         
         Timer.scheduledTimer(timeInterval: 1.0,
                              target: self,
-                             selector: #selector(removeWaffles),
+                             selector: #selector(intervalUpdate),
                              userInfo: nil,
                              repeats: true)
         
@@ -56,6 +59,11 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        moon.frame = CGRect(x: self.view.center.x - 40.0,
+                            y: 100.0,
+                            width: 80.0,
+                            height: 80.0)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,14 +80,32 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         self.collisionBehavior.addItem(newWaffle)
     }
     
-    @objc func removeWaffles() {
+    @objc func intervalUpdate() {
+        // remove waffles out of screen
         for waffle in self.waffles {
-            if (!(waffle.superview?.bounds)!.contains(waffle.frame)) {
+            if (!(waffle.superview?.frame)!.intersects(waffle.frame)) {
                 waffle.removeFromSuperview()
                 self.waffles.remove(waffle)
                 self.waffleCount += 1
                 print("did remove waffle \(waffleCount)");
             }
+        }
+        
+        // put the moon back
+        if (!moon.superview!.frame.intersects(moon.frame)) {
+            let center = CGPoint(x: moon.superview!.center.x - 40.0, y: 100.0)
+            
+            self.collisionBehavior.removeItem(moon)
+            UIView.animate(withDuration: 1.0, animations: { [unowned self] in
+                self.moon.center = center
+            }) { [unowned self] (completed) in
+                if (completed == true) {
+                    self.collisionBehavior.addItem(self.moon)
+                    print("moved moon back")
+                }
+            }
+            
+            
         }
     }
     
