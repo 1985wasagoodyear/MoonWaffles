@@ -27,6 +27,10 @@ final class MissionControlViewController: UIViewController, OptionsProtocol, Moo
     
     var timer: Timer!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -138,7 +142,7 @@ final class MissionControlViewController: UIViewController, OptionsProtocol, Moo
     // MARK: MoonProtocol Delegate Methods
     
     func didTouchMoon() {
-        
+        self.collisionBehavior.removeItem(moon)
     }
     
     func didMoveMoon(_ locX: Double, _ locY: Double) {
@@ -146,7 +150,7 @@ final class MissionControlViewController: UIViewController, OptionsProtocol, Moo
     }
     
     func didReleaseMoon() {
-        self.moon.layoutIfNeeded()
+        self.collisionBehavior.addItem(self.moon)
     }
 }
 
