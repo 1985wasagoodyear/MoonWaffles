@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MissionControlViewController: UIViewController, OptionsProtocol {
+final class MissionControlViewController: UIViewController, OptionsProtocol, MoonProtocol {
 
     @IBOutlet weak var optionsButton: UIButton!
     
@@ -17,12 +17,15 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
     var collisionBehavior: UICollisionBehavior!
 
     var waffles = Set<WaffleImageView>()
+    var newWaffle: WaffleImageView!
     
     var waffleCount = 0
     
     var waffleOption: String!
     
-    var moon: UIImageView!
+    var moon: MoonImageView!
+    
+    var timer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,8 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         gravityBehavior.magnitude = -0.4
         self.animator.addBehavior(gravityBehavior)
         
-        moon = UIImageView(image: UIImage(named: "superMoon"))
+        moon = MoonImageView(image: UIImage(named: "superMoon"))
+        moon.delegate = self
         moon.contentMode = .scaleAspectFit
         
         moon.frame = CGRect(x: self.view.center.x - 40.0,
@@ -47,32 +51,43 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         collisionBehavior.collisionMode = .items
         
         animator.addBehavior(collisionBehavior)
-        
-        
-        Timer.scheduledTimer(timeInterval: 1.0,
-                             target: self,
-                             selector: #selector(intervalUpdate),
-                             userInfo: nil,
-                             repeats: true)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        moon.center = CGPoint(x: self.view.center.x, y: 100.0)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                          target: self,
+                                          selector: #selector(intervalUpdate),
+                                          userInfo: nil,
+                                          repeats: true)
+       //  moon.center = CGPoint(x: self.view.center.x, y: 100.0)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.timer.invalidate()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first?.location(in: self.view)
         
         // create a new waffle
-        let newWaffle = WaffleImageView.newWaffle(self.waffleOption)
+        self.newWaffle = WaffleImageView.newWaffle(self.waffleOption)
         newWaffle.center = location!
         self.view.addSubview(newWaffle)
-
+        
         self.waffles.insert(newWaffle)
-
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let location = touches.first?.location(in: self.view)
+        newWaffle.center = location!
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.gravityBehavior.addItem(newWaffle)
         self.collisionBehavior.addItem(newWaffle)
     }
@@ -89,11 +104,15 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         }
         
         // put the moon back
-        if (!moon.superview!.frame.intersects(moon.frame)) {
+        self.resetTheMoon()
+    }
+    
+    func resetTheMoon() {
+        if (!moon.superview!.frame.intersects(moon.frame) || self.moon.alpha < 1.0) {
             let center = CGPoint(x: moon.superview!.center.x, y: 100.0)
             self.collisionBehavior.removeItem(moon)
             moon.alpha = 0.5
-            UIView.animate(withDuration: 2.0, animations: { [unowned self] in
+            UIView.animate(withDuration: 1.5, animations: { [unowned self] in
                 self.moon.center = center
                 self.moon.layoutIfNeeded()
             }) { [unowned self] (completed) in
@@ -116,5 +135,18 @@ final class MissionControlViewController: UIViewController, OptionsProtocol {
         self.waffleOption = option;
     }
     
+    // MARK: MoonProtocol Delegate Methods
+    
+    func didTouchMoon() {
+        
+    }
+    
+    func didMoveMoon(_ locX: Double, _ locY: Double) {
+        self.moon.center = CGPoint(x: locX, y: locY)
+    }
+    
+    func didReleaseMoon() {
+        self.moon.layoutIfNeeded()
+    }
 }
 
