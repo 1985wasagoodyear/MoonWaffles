@@ -135,6 +135,8 @@ final class MissionControlViewController: UIViewController, OptionsProtocol, Moo
         
     }
     
+    // MARK: OptionsProtocol Delegate Methods
+    
     func didSelectNewOption(_ option: String) {
         self.waffleOption = option;
     }
