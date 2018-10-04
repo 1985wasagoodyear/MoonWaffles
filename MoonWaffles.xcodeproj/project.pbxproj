@@ -10,6 +10,7 @@
 		3F011180214AD23000074623 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01117F214AD23000074623 /* OptionsViewController.swift */; };
 		3F011183214AD3E700074623 /* OptionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F011182214AD3E700074623 /* OptionsProtocol.swift */; };
 		3F011185214AD6D100074623 /* WaffleOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F011184214AD6D100074623 /* WaffleOptions.plist */; };
+		3F0C1280216696EC0080CE4A /* MoonWafflesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C127F216696EC0080CE4A /* MoonWafflesTests.m */; };
 		3F4B9471214ACAF400A50933 /* WaffleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B9470214ACAF400A50933 /* WaffleImageView.swift */; };
 		3F8F378C214AC6ED007B4073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F378B214AC6ED007B4073 /* AppDelegate.swift */; };
 		3F8F378E214AC6ED007B4073 /* MissionControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F378D214AC6ED007B4073 /* MissionControlViewController.swift */; };
@@ -20,10 +21,23 @@
 		3FDE0D9D215D1E2F00FF8715 /* MoonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE0D9C215D1E2F00FF8715 /* MoonProtocol.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3F0C1282216696EC0080CE4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F8F3780214AC6ED007B4073 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F8F3787214AC6ED007B4073;
+			remoteInfo = MoonWaffles;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3F01117F214AD23000074623 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		3F011182214AD3E700074623 /* OptionsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsProtocol.swift; sourceTree = "<group>"; };
 		3F011184214AD6D100074623 /* WaffleOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WaffleOptions.plist; sourceTree = "<group>"; };
+		3F0C127D216696EC0080CE4A /* MoonWafflesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonWafflesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0C127F216696EC0080CE4A /* MoonWafflesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoonWafflesTests.m; sourceTree = "<group>"; };
+		3F0C1281216696EC0080CE4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F4B9470214ACAF400A50933 /* WaffleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaffleImageView.swift; sourceTree = "<group>"; };
 		3F8F3788214AC6ED007B4073 /* MoonWaffles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoonWaffles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8F378B214AC6ED007B4073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +51,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3F0C127A216696EC0080CE4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F8F3785214AC6ED007B4073 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,10 +88,20 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		3F0C127E216696EC0080CE4A /* MoonWafflesTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F0C127F216696EC0080CE4A /* MoonWafflesTests.m */,
+				3F0C1281216696EC0080CE4A /* Info.plist */,
+			);
+			path = MoonWafflesTests;
+			sourceTree = "<group>";
+		};
 		3F8F377F214AC6ED007B4073 = {
 			isa = PBXGroup;
 			children = (
 				3F8F378A214AC6ED007B4073 /* MoonWaffles */,
+				3F0C127E216696EC0080CE4A /* MoonWafflesTests */,
 				3F8F3789214AC6ED007B4073 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				3F8F3788214AC6ED007B4073 /* MoonWaffles.app */,
+				3F0C127D216696EC0080CE4A /* MoonWafflesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +133,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3F0C127C216696EC0080CE4A /* MoonWafflesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0C1286216696EC0080CE4A /* Build configuration list for PBXNativeTarget "MoonWafflesTests" */;
+			buildPhases = (
+				3F0C1279216696EC0080CE4A /* Sources */,
+				3F0C127A216696EC0080CE4A /* Frameworks */,
+				3F0C127B216696EC0080CE4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F0C1283216696EC0080CE4A /* PBXTargetDependency */,
+			);
+			name = MoonWafflesTests;
+			productName = MoonWafflesTests;
+			productReference = 3F0C127D216696EC0080CE4A /* MoonWafflesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3F8F3787214AC6ED007B4073 /* MoonWaffles */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F8F379A214AC6F3007B4073 /* Build configuration list for PBXNativeTarget "MoonWaffles" */;
@@ -128,6 +178,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Kevin Yu";
 				TargetAttributes = {
+					3F0C127C216696EC0080CE4A = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 3F8F3787214AC6ED007B4073;
+					};
 					3F8F3787214AC6ED007B4073 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -147,11 +201,19 @@
 			projectRoot = "";
 			targets = (
 				3F8F3787214AC6ED007B4073 /* MoonWaffles */,
+				3F0C127C216696EC0080CE4A /* MoonWafflesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3F0C127B216696EC0080CE4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F8F3786214AC6ED007B4073 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +228,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3F0C1279216696EC0080CE4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0C1280216696EC0080CE4A /* MoonWafflesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F8F3784214AC6ED007B4073 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +251,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F0C1283216696EC0080CE4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F8F3787214AC6ED007B4073 /* MoonWaffles */;
+			targetProxy = 3F0C1282216696EC0080CE4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F8F378F214AC6ED007B4073 /* Main.storyboard */ = {
@@ -202,6 +280,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3F0C1284216696EC0080CE4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MoonWafflesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = kevinyu.MoonWafflesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoonWaffles.app/MoonWaffles";
+			};
+			name = Debug;
+		};
+		3F0C1285216696EC0080CE4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MoonWafflesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = kevinyu.MoonWafflesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoonWaffles.app/MoonWaffles";
+			};
+			name = Release;
+		};
 		3F8F3798214AC6F3007B4073 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -355,6 +476,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3F0C1286216696EC0080CE4A /* Build configuration list for PBXNativeTarget "MoonWafflesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0C1284216696EC0080CE4A /* Debug */,
+				3F0C1285216696EC0080CE4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3F8F3783214AC6ED007B4073 /* Build configuration list for PBXProject "MoonWaffles" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
