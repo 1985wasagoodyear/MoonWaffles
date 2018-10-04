@@ -15,7 +15,8 @@ node('master') {
         ])
 
         // Build and Test
-        sh 'xcodebuild -scheme "MoonWaffles" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone X,OS=11.4" -enableCodeCoverage YES // | /usr/local/bin/xcpretty -r junit'
+        sh 'xcodebuild -scheme "MoonWaffles" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone X,OS=11.4" -enableCodeCoverage YES 
+// | /usr/local/bin/xcpretty -r junit'
 
         // Publish test restults.
        // step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
